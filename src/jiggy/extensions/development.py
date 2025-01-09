@@ -15,6 +15,7 @@ class DevelopmentCog(commands.Cog):
         self.logger = logging.getLogger(__name__)
 
     @app_commands.command()
+    @app_commands.default_permissions(administrator=True)
     async def sync(self, inter: discord.Interaction):
         """Sync all commands globally to discord.
 
