@@ -18,6 +18,7 @@ class JiggyBot(commands.Bot):
     """Jiggy bot."""
 
     def __init__(self, *args, **kwargs) -> None:
+        self.logger = logging.getLogger(__name__)
         super().__init__(*args, **kwargs)
 
     async def setup_hook(self):
@@ -33,8 +34,7 @@ class JiggyBot(commands.Bot):
 
     async def on_ready(self) -> None:
         """Call when bot is ready to accept commands."""
-        logger = logging.getLogger(__name__)
-        logger.info("Logged in as %s", bot.user)
+        self.logger.info("Logged in as %s", bot.user)
 
 
 def setup_logging(
