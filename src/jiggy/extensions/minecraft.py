@@ -2,6 +2,7 @@
 
 import logging
 import re
+import os
 import subprocess
 
 import discord
@@ -17,6 +18,27 @@ class MinecraftCog(
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
         self.logger = logging.getLogger(__name__)
+
+    def get_whitelist_embed(self, username: str):
+        """Create a pretty Discord embed for whitelisting users.
+
+        Parameters
+        ----------
+        username : str
+            Minecraft username to whitelist on the server.
+        """
+        clean = sanitize_minecraft_username(username)
+        head_url = f"https://mc-heads.net/avatar/{clean}"
+        ip = os.getenv("SERVER_IP", "")
+        version = os.getenv("SERVER_MINECRAFT_VERSION", "")
+        embed = discord.Embed(
+            title="You're Whitelisted",
+            description=f"Added {clean} to the whitelist\nRunning {version}\nIP: {ip}",
+            color=discord.Color.random(),
+            timestamp=discord.utils.utcnow(),
+        )
+        embed.set_thumbnail(url=head_url)
+        return embed
 
     @app_commands.command()
     async def whitelist(self, inter: discord.Interaction, username: str):
@@ -43,7 +65,7 @@ class MinecraftCog(
             clean = sanitize_minecraft_username(username)
             send_tmux_command(tmux_session, f"whitelist add {clean}")
             self.logger.info("Added '%s' to the whitelist", clean)
-            await inter.response.send_message(f"Added {clean} to the whitelist")
+            await inter.response.send_message(embed=self.get_whitelist_embed(clean))
 
 
 def minecraft_username_is_valid(username: str) -> bool:
