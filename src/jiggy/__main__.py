@@ -71,4 +71,26 @@ if __name__ == "__main__":
     intents = discord.Intents.none()
     intents.message_content = True
     bot = JiggyBot(command_prefix=commands.when_mentioned_or("!"), intents=intents)
+
+    text = r"""
+ ▄▄▄██▀▀▀ ██▓  ▄████   ▄████ ▓██   ██▓
+   ▒██   ▓██▒ ██▒ ▀█▒ ██▒ ▀█▒ ▒██  ██▓
+   ░██   ▒██▒▒██░▄▄▄░▒██░▄▄▄░  ▒██ ██▒
+▓██▄██▓  ░██░░▓█  ██▓░▓█  ██▓  ░ ▐██▓▒
+ ▓███▒   ░██░░▒▓███▀▒░▒▓███▀▒  ░ ██▒▓▒
+ ▒▓▒▒░   ░▓   ░▒   ▒  ░▒   ▒    ██▒▒▒░
+ ▒ ░▒░    ▒ ░  ░   ░   ░   ░  ▓██ ░▒░░
+ ░ ░ ░    ▒ ░░ ░   ░ ░ ░   ░  ▒ ▒ ░░ ░
+ ░   ░    ░        ░       ░  ░ ░    ░
+                              ░ ░    ░
+    """
+    terminal_width = os.get_terminal_size().columns
+    centered_text = "\n".join(
+        " " * max(0, (terminal_width - len(line)) // 2) + line
+        for line in text.splitlines()
+    )
+
+    logger = logging.getLogger(__name__)
+    logger.info(centered_text)
+
     bot.run(TOKEN, log_handler=None)
