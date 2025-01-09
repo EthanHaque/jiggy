@@ -4,6 +4,22 @@
 ![Issues](https://img.shields.io/github/issues/EthanHaque/jiggy)
 ![Stars](https://img.shields.io/github/stars/EthanHaque/jiggy)
 
+
+<p align="center">
+  <pre>
+    ▄▄▄██▀▀▀ ██▓  ▄████   ▄████ ▓██   ██▓
+      ▒██   ▓██▒ ██▒ ▀█▒ ██▒ ▀█▒ ▒██  ██▓
+      ░██   ▒██▒▒██░▄▄▄░▒██░▄▄▄░  ▒██ ██▒
+   ▓██▄██▓  ░██░░▓█  ██▓░▓█  ██▓  ░ ▐██▓▒
+    ▓███▒   ░██░░▒▓███▀▒░▒▓███▀▒  ░ ██▒▓▒
+    ▒▓▒▒░   ░▓   ░▒   ▒  ░▒   ▒    ██▒▒▒░
+    ▒ ░▒░    ▒ ░  ░   ░   ░   ░  ▓██ ░▒░░
+    ░ ░ ░    ▒ ░░ ░   ░ ░ ░   ░  ▒ ▒ ░░ ░
+    ░   ░    ░        ░       ░  ░ ░    ░
+                                 ░ ░    ░
+  </pre>
+</p>
+
 ## Overview
 
 **Jiggy** is a Discord bot created for the Princeton University Robotics Club.
