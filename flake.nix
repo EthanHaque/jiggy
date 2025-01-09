@@ -16,7 +16,7 @@
     let
       forEachSystem = nixpkgs.lib.genAttrs (import systems);
     in
-    {
+      {
       packages = forEachSystem (system: {
         devenv-up = self.devShells.${system}.default.config.procfileScript;
         devenv-test = self.devShells.${system}.default.config.test;
@@ -27,16 +27,17 @@
           let
             pkgs = nixpkgs.legacyPackages.${system};
           in
-          {
+            {
             default = devenv.lib.mkShell {
               inherit inputs pkgs;
               modules = [
                 {
                   packages = with pkgs; [
                     (pkgs.python312.withPackages (ps: with ps;
-                    [
-                      numpy
-                    ]))
+                      [
+                        discordpy
+                        python-dotenv
+                      ]))
                   ];
 
                   languages.python = {
@@ -47,10 +48,6 @@
                       quiet = true;
                     };
                   };
-
-                  enterShell = ''
-                    pip install -e .
-                  '';
                 }
               ];
             };

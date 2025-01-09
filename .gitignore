@@ -106,3 +106,5 @@ src/.DS_Store
 
 # devenv configuration
 .devenv
+
+logs/
