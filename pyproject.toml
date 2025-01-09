@@ -47,11 +47,6 @@ enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
 warn_unreachable = true
 disallow_untyped_defs = false
 disallow_incomplete_defs = false
-exclude = "src/hifz/visualizers/gui.py"
-
-[[tool.mypy.overrides]]
-module = "PyQt6.*"
-ignore_missing_imports = true
 
 [tool.ruff.lint]
 extend-select = [
