@@ -30,7 +30,7 @@ class MinecraftCog(
             Minecraft username to whitelist on the server.
         """
         self.logger.info(
-            "%s called whitelist from guild %d in channel %d",
+            "'%s' called whitelist from guild with id %d in channel with id %d",
             inter.user,
             inter.guild_id,
             inter.channel_id,
@@ -40,14 +40,10 @@ class MinecraftCog(
         if not minecraft_username_is_valid(username):
             await inter.response.send_message("The provided username is invalid.")
         else:
-            sanitized_minecraft_username = sanitize_minecraft_username(username)
-            send_tmux_command(
-                tmux_session, f"whitelist add {sanitized_minecraft_username}"
-            )
-            self.logger.info("Added %s to the whitelist", sanitize_minecraft_username)
-            await inter.response.send_message(
-                f"Added {sanitized_minecraft_username} to the whitelist"
-            )
+            clean = sanitize_minecraft_username(username)
+            send_tmux_command(tmux_session, f"whitelist add {clean}")
+            self.logger.info("Added '%s' to the whitelist", clean)
+            await inter.response.send_message(f"Added {clean} to the whitelist")
 
 
 def minecraft_username_is_valid(username: str) -> bool:

@@ -47,9 +47,9 @@ def setup_logging(
     log_dir_path = Path(log_dir)
     log_dir_path.mkdir(parents=True, exist_ok=True)
 
-    path = Path(os.getenv(env_key, default_path))
-    if Path.exists(path):
-        with path.open("r") as f:
+    logging_config_path = Path(os.getenv(env_key, default_path))
+    if Path.exists(logging_config_path):
+        with logging_config_path.open("r") as f:
             config = json.load(f)
         # Update file paths dynamically
         config["handlers"]["info_file_handler"]["filename"] = str(

@@ -23,7 +23,7 @@ class DevelopmentCog(commands.Cog):
         can take up to an hour for update to appear.
         """
         self.logger.info(
-            "%s called sync from guild %d in channel %d",
+            "'%s' called sync from guild %d in channel %d",
             inter.user,
             inter.guild_id,
             inter.channel_id,
