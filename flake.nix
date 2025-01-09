@@ -33,6 +33,7 @@
               modules = [
                 {
                   packages = with pkgs; [
+                    pre-commit
                     (pkgs.python312.withPackages (ps: with ps;
                       [
                         discordpy
