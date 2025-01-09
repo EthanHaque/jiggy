@@ -30,7 +30,7 @@ packages = { find = { where = ["src"] } }
 minversion = "6.0"
 addopts = ["-ra", "--showlocals", "--strict-markers", "--strict-config"]
 xfail_strict = true
-filterwarnings = ["error"]
+filterwarnings = ["error", "ignore:'audioop' is deprecated and slated for removal:DeprecationWarning"]
 log_cli_level = "info"
 testpaths = [
     "tests",
@@ -47,11 +47,6 @@ enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
 warn_unreachable = true
 disallow_untyped_defs = false
 disallow_incomplete_defs = false
-exclude = "src/hifz/visualizers/gui.py"
-
-[[tool.mypy.overrides]]
-module = "PyQt6.*"
-ignore_missing_imports = true
 
 [tool.ruff.lint]
 extend-select = [

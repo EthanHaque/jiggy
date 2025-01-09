@@ -1,8 +1,8 @@
 """Jiggy commaands for managing the Minecraft server."""
 
 import logging
-import re
 import os
+import re
 import subprocess
 
 import discord
