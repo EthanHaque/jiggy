@@ -73,6 +73,7 @@ if __name__ == "__main__":
     bot = JiggyBot(command_prefix=commands.when_mentioned_or("!"), intents=intents)
 
     text = r"""
+
  ▄▄▄██▀▀▀ ██▓  ▄████   ▄████ ▓██   ██▓
    ▒██   ▓██▒ ██▒ ▀█▒ ██▒ ▀█▒ ▒██  ██▓
    ░██   ▒██▒▒██░▄▄▄░▒██░▄▄▄░  ▒██ ██▒
