@@ -30,7 +30,7 @@ packages = { find = { where = ["src"] } }
 minversion = "6.0"
 addopts = ["-ra", "--showlocals", "--strict-markers", "--strict-config"]
 xfail_strict = true
-filterwarnings = ["error"]
+filterwarnings = ["error", "ignore:'audioop' is deprecated and slated for removal:DeprecationWarning"]
 log_cli_level = "info"
 testpaths = [
     "tests",
