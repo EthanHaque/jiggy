@@ -42,7 +42,7 @@ def setup_logging(
     default_level=logging.INFO,
     log_dir="logs",
     env_key="LOG_CFG",
-):
+) -> None:
     """Set up global logging configuration."""
     log_dir_path = Path(log_dir)
     log_dir_path.mkdir(parents=True, exist_ok=True)
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     load_dotenv()
     setup_logging()
 
-    TOKEN = os.getenv("BOT_TOKEN")
+    TOKEN = os.getenv("BOT_TOKEN", "")
     intents = discord.Intents.none()
     intents.message_content = True
     bot = JiggyBot(command_prefix=commands.when_mentioned_or("!"), intents=intents)

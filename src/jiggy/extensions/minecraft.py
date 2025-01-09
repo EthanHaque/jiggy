@@ -63,7 +63,7 @@ def minecraft_username_is_valid(username: str) -> bool:
         Minecraft username to check against rules.
     """
     pattern = re.compile(r"^[a-zA-Z0-9_]{3,16}$")
-    return pattern.match(username)
+    return bool(pattern.match(username))
 
 
 def sanitize_minecraft_username(username: str) -> str:
@@ -95,12 +95,15 @@ def send_tmux_command(session_name: str, command: str):
     logger = logging.getLogger(__name__)
     try:
         args = ["tmux", "send-keys", "-t", f"{session_name}:0", command, "ENTER"]
-        # subprocess.run( args, check=True)
+        subprocess.run(args, check=True)
         logger.debug("called " + " ".join(args))
-    except subprocess.CalledProcessError as e:
-        # TODO: use builtin logging functionality for printing errors
+    except subprocess.CalledProcessError:
+        # TODO: this does not get called properly on error.
         logger.error(
-            f"Failed to send tmux command '{command}' to session '{session_name}': {e}"
+            "Failed to send tmux command '%s' to session '%s'",
+            command,
+            session_name,
+            exc_info=True,
         )
 
 
